@@ -41,8 +41,23 @@ body.dark-theme {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#play-btn, #pause-btn, #stop-btn {
-    width: 80px;
+/* Estilo para botões sem fundo */
+.btn-icon {
+    border: none;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Adicionar efeito de zoom ao passar o mouse nos botões */
+.btn-icon:hover {
+    transform: scale(1.1);
 }
 
 #progress-bar {
