@@ -1,17 +1,32 @@
+/* Definindo variáveis de cores */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+    --text-light: #ffffff;
+    --text-dark: #212529;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: var(--light-bg);
+    transition: background-color 0.3s ease;
     margin: 0;
 }
 
-.card {
+.player-card {
     width: 400px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--light-bg);
+}
+
+.card-header {
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #play-btn, #pause-btn, #stop-btn {
@@ -34,4 +49,51 @@ body {
 #playlist li.active {
     background-color: #dcdcdc;
     font-weight: bold;
+}
+
+.visualizer-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+canvas {
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.theme-toggle-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.dark-theme {
+    --primary-color: #212529;
+    --secondary-color: #adb5bd;
+    --success-color: #198754;
+    --warning-color: #e0a800;
+    --danger-color: #bd2130;
+    --light-bg: #212529;
+    --dark-bg: #f8f9fa;
+    --text-light: #ffffff;
+    --text-dark: #f8f9fa;
+}
+
+body.dark-theme {
+    background-color: var(--light-bg);
+}
+
+.player-card.dark-theme {
+    background-color: var(--primary-color);
+}
+
+.card-header.dark-theme {
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+}
+
+canvas.dark-theme {
+    border-color: var(--secondary-color);
 }

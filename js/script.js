@@ -4,6 +4,7 @@ const pauseButton = document.getElementById('pause-btn');
 const stopButton = document.getElementById('stop-btn');
 const repeatButton = document.getElementById('repeat-btn');
 const shuffleButton = document.getElementById('shuffle-btn');
+const themeToggleButton = document.getElementById('theme-toggle-btn');
 const audioPlayer = document.getElementById('audio-player');
 const progressBar = document.getElementById('progress-bar');
 const musicTitle = document.getElementById('music-title');
@@ -109,4 +110,51 @@ progressBar.parentElement.addEventListener('click', (e) => {
     const totalWidth = progressBar.parentElement.clientWidth;
     const clickPosition = (clickX / totalWidth) * audioPlayer.duration;
     audioPlayer.currentTime = clickPosition;
+});
+
+// Alternar entre tema claro e escuro
+themeToggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    document.querySelector('.player-card').classList.toggle('dark-theme');
+    document.querySelector('.card-header').classList.toggle('dark-theme');
+    canvas.classList.toggle('dark-theme');
+});
+
+// Configuração para a visualização de áudio
+const canvas = document.getElementById('audio-visualizer');
+const canvasContext = canvas.getContext('2d');
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const analyser = audioContext.createAnalyser();
+const source = audioContext.createMediaElementSource(audioPlayer);
+source.connect(analyser);
+analyser.connect(audioContext.destination);
+
+// Configuração do analisador
+analyser.fftSize = 256;
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
+// Função para desenhar visualização
+function drawVisualizer() {
+    requestAnimationFrame(drawVisualizer);
+    analyser.getByteFrequencyData(dataArray);
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+
+    const barWidth = (canvas.width / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    for (let i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i] / 2;
+        canvasContext.fillStyle = `rgb(${barHeight + 100}, 50, 50)`;
+        canvasContext.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth + 1;
+    }
+}
+
+// Iniciar visualização quando o áudio for reproduzido
+audioPlayer.addEventListener('play', () => {
+    audioContext.resume().then(() => {
+        drawVisualizer();
+    });
 });
