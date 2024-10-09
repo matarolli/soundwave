@@ -16,16 +16,24 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card player-card glass-effect">
             <div class="card-header text-center text-white">
-                <h3>Player de Música</h3>
+                <h3>AWSOME PLAYER</h3>
             </div>
             <div class="card-body">
                 <div class="details mb-3 text-center">
-                    <h4 id="music-title">Nome da Música</h4>
+                    <h4 id="music-title" class="marquee">Nome da Música</h4>
+                </div>
+                <!-- Div para a imagem da música -->
+                <div class="music-image-container text-center mb-3">
+                    <img id="music-image" src="" alt="Imagem da Música" class="music-image">
                 </div>
                 <div class="controls">
                     <!-- Distribuição dos botões em linhas e colunas -->
                     <div class="row">
                         <div class="col text-center mb-2">
+                            <!-- Botão Previous -->
+                            <button id="previous-btn" class="btn-icon">
+                                <img src="assets/icons/previous.svg" alt="Previous" class="icon">
+                            </button>
                             <!-- Botão Play -->
                             <button id="play-btn" class="btn-icon">
                                 <img src="assets/icons/play.svg" alt="Play" class="icon">
@@ -37,6 +45,10 @@
                             <!-- Botão Stop -->
                             <button id="stop-btn" class="btn-icon">
                                 <img src="assets/icons/stop.svg" alt="Stop" class="icon">
+                            </button>
+                            <!-- Botão Next -->
+                            <button id="next-btn" class="btn-icon">
+                                <img src="assets/icons/next.svg" alt="Next" class="icon">
                             </button>
                         </div>
                     </div>
@@ -55,16 +67,16 @@
                 </div>
                 <!-- Lista de reprodução -->
                 <ul id="playlist" class="list-group mt-4">
-                    <li class="list-group-item active" data-src="assets/songs/musica1.mp3">Música 1</li>
-                    <li class="list-group-item" data-src="assets/songs/musica2.mp3">Música 2</li>
-                    <li class="list-group-item" data-src="assets/songs/musica3.mp3">Música 3</li>
+                    <li class="list-group-item active" data-src="assets/songs/musica1.mp3" data-img="assets/img/music1.jpg">Música 1</li>
+                    <li class="list-group-item" data-src="assets/songs/musica2.mp3" data-img="assets/img/music2.jpg">Música 2</li>
+                    <li class="list-group-item" data-src="assets/songs/musica3.mp3" data-img="assets/img/music3.jpg">Música 3</li>
                 </ul>
                 <div class="progress mt-4">
                     <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <!-- Visualizador de Áudio dentro do player -->
                 <div class="visualizer-container mt-4">
-                    <canvas id="audio-visualizer" width="380" height="100"></canvas>
+                    <canvas id="audio-visualizer" width="380" height="50"></canvas>
                 </div>
             </div>
         </div>
