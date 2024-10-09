@@ -21,3 +21,17 @@ body {
 #progress-bar {
     transition: width 0.1s ease;
 }
+
+#playlist {
+    list-style-type: none;
+    padding: 0;
+}
+
+#playlist li {
+    cursor: pointer;
+}
+
+#playlist li.active {
+    background-color: #dcdcdc;
+    font-weight: bold;
+}
