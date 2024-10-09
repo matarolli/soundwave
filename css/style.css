@@ -5,27 +5,39 @@
     --success-color: #28a745;
     --warning-color: #ffc107;
     --danger-color: #dc3545;
-    --light-bg: #f8f9fa;
-    --dark-bg: #343a40;
+    --light-bg: rgba(255, 255, 255, 0.1);
+    --dark-bg: rgba(0, 0, 0, 0.7);
+    --border-color-light: rgba(255, 255, 255, 0.3);
+    --border-color-dark: rgba(0, 0, 0, 0.3);
     --text-light: #ffffff;
     --text-dark: #212529;
+    --glass-blur: 9px;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--light-bg);
     transition: background-color 0.3s ease;
     margin: 0;
+    background: url('../assets/img/bgday.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.dark-theme {
+    background: url('../assets/img/bgnight.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .player-card {
     width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: var(--light-bg);
+    border: 2px solid var(--border-color-light);
+    backdrop-filter: blur(var(--glass-blur));
 }
 
 .card-header {
+    border-radius: 15px 15px 0 0;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -40,14 +52,19 @@ body {
 #playlist {
     list-style-type: none;
     padding: 0;
+    border: 2px solid var(--border-color-light);
+    border-radius: 15px;
+    backdrop-filter: blur(var(--glass-blur));
 }
 
 #playlist li {
     cursor: pointer;
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color-light);
 }
 
 #playlist li.active {
-    background-color: #dcdcdc;
+    background-color: rgba(255, 255, 255, 0.3);
     font-weight: bold;
 }
 
@@ -58,8 +75,8 @@ body {
 }
 
 canvas {
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
+    border: 1px solid var(--border-color-light);
+    border-radius: 15px;
     transition: border-color 0.3s ease;
 }
 
@@ -69,24 +86,30 @@ canvas {
     right: 10px;
 }
 
+.glass-effect {
+    border: 2px solid var(--border-color-light);
+    backdrop-filter: blur(var(--glass-blur));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .dark-theme {
     --primary-color: #212529;
     --secondary-color: #adb5bd;
     --success-color: #198754;
     --warning-color: #e0a800;
     --danger-color: #bd2130;
-    --light-bg: #212529;
-    --dark-bg: #f8f9fa;
+    --light-bg: rgba(0, 0, 0, 0.5);
+    --dark-bg: rgba(255, 255, 255, 0.1);
+    --border-color-light: rgba(255, 255, 255, 0.3);
+    --border-color-dark: rgba(0, 0, 0, 0.3);
     --text-light: #ffffff;
     --text-dark: #f8f9fa;
-}
-
-body.dark-theme {
-    background-color: var(--light-bg);
+    --glass-blur: 9px;
 }
 
 .player-card.dark-theme {
     background-color: var(--primary-color);
+    border-color: var(--border-color-dark);
 }
 
 .card-header.dark-theme {
