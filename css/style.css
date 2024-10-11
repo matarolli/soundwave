@@ -232,3 +232,10 @@ body.dark-theme .player-card {
 canvas.dark-theme {
     border-color: var(--secondary-color);
 }
+/* Estilo para o texto de crédito na base do player */
+.credit {
+    font-size: 16px; 
+    color: var(--text-light); 
+    margin-top: 5px; /* Margem superior para espaçamento */
+    opacity: 0.7; /* Transparência para um estilo sutil */
+}
