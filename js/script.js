@@ -53,7 +53,7 @@ playButton.addEventListener('click', () => {
     if (!isPlaying) {
         audioPlayer.play();
         isPlaying = true;
-        musicTitle.textContent = `Tocando: ${document.querySelector('#playlist li.active').textContent}`;
+        musicTitle.textContent = `${document.querySelector('#playlist li.active').textContent}`;
     }
 });
 
@@ -171,7 +171,7 @@ function drawVisualizer() {
 
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i] / 2;
-        canvasContext.fillStyle = `rgb(0, 153, 255)`; // Cor das barras
+        canvasContext.fillStyle = `rgb(186, 3, 210)`; // Cor das barras
         canvasContext.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth + 1;
     }

@@ -12,10 +12,11 @@
     --text-light: #ffffff;
     --text-dark: #212529;
     --glass-blur: 9px;
+    --lilac-color: #ba03d2; /* Cor lilás suave */
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Pixelify Sans', sans-serif;
     transition: background-color 0.3s ease;
     margin: 0;
     background: url('../assets/img/bgday.jpg') no-repeat center center fixed;
@@ -30,10 +31,10 @@ body.dark-theme {
 .player-card {
     width: 400px;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
     background-color: var(--light-bg);
     border: 2px solid var(--border-color-light);
-    backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur)); /* Efeito de vidro */
     max-height: 600px;
 }
 
@@ -61,21 +62,28 @@ body.dark-theme .btn-icon img {
     filter: brightness(0) invert(1); /* Tornar ícones visíveis no modo escuro */
 }
 
-
-
-/* Estilo para a imagem da música */
-.music-image-container {
-    width: 100%;
-    height: 70px;
+/* Container para a imagem e o canvas lado a lado */
+.music-visualizer-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    gap: 10px; /* Espaçamento entre imagem e canvas */
+    width: 100%;
+    margin-bottom: 20px;
 }
 
+/* Estilo para a imagem da música */
 .music-image {
-    max-width: 100%;
-    max-height: 100%;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+/* Ajustar o tamanho do canvas */
+#audio-visualizer {
+    width: 150px;
+    height: 70px;
+    border: 1px solid var(--border-color-light);
     border-radius: 10px;
 }
 
@@ -85,6 +93,7 @@ body.dark-theme .btn-icon img {
 }
 
 #progress-bar {
+    background-color: var(--lilac-color); /* Cor lilás para a barra de progresso */
     transition: width 0.1s ease;
 }
 
@@ -137,8 +146,49 @@ body.dark-theme canvas {
     border: 1px solid var(--border-color-dark);
 }
 
+/* Estilo do botão de alternância de tema */
+#theme-toggle-btn {
+    font-family: 'Pixelify Sans', sans-serif; /* Fonte para o botão */
+    font-weight: 500;
+    background-color: var(--light-bg); /* Cor de fundo translúcida */
+    color: #ffffff; /* Texto branco */
+    border: 1px solid var(--border-color-light); /* Borda clara */
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Mesma sombra do player */
+    backdrop-filter: blur(var(--glass-blur)); /* Efeito de vidro */
+}
+
+/* Efeito de brilho ao passar o mouse */
+#theme-toggle-btn:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Aumenta a sombra no hover */
+}
+
+/* Modo claro - cor mais clara */
+body.light-theme #theme-toggle-btn {
+    background-color: var(--light-bg); /* Fundo translúcido */
+    color: #ffffff; /* Texto branco */
+    border: 1px solid var(--border-color-light);
+}
+
+/* Modo escuro - ajuste de cores */
+body.dark-theme #theme-toggle-btn {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    border: 1px solid var(--border-color-dark);
+}
+
+/* Efeito ao clicar */
+#theme-toggle-btn:active {
+    transform: scale(0.95); /* Reduz o tamanho do botão ao ser clicado */
+}
+
+/* Distância entre o botão de alternância de tema e o player */
 .theme-toggle-container {
-    position: absolute;
+    margin-bottom: 5px; /* Distância ajustada para 5px */
     top: 10px;
     right: 10px;
 }
@@ -146,7 +196,7 @@ body.dark-theme canvas {
 .glass-effect {
     border: 2px solid var(--border-color-light);
     backdrop-filter: blur(var(--glass-blur));
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Mesma sombra aplicada ao botão */
 }
 
 body.dark-theme .glass-effect {
