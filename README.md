@@ -191,7 +191,7 @@ O código JavaScript do site possui várias funcionalidades relacionadas ao play
             if (!isPlaying) {
                 audioPlayer.play();
                 isPlaying = true;
-                musicTitle.textContent = `Tocando: ${playlistItems[currentIndex].textContent}`;
+                musicTitle.textContent = ` ${playlistItems[currentIndex].textContent}`;
             }
         });
         
